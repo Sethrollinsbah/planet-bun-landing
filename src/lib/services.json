@@ -1,0 +1,142 @@
+[
+	{
+		"id": 1,
+		"name": "E-commerce Website Development",
+		"description": "Design and build fully-featured e-commerce platforms.",
+		"img": "",
+		"tags": ["Web Development", "E-commerce", "CMS", "Authentication", "SEO"]
+	},
+	{
+		"id": 2,
+		"name": "Mobile App Development",
+		"description": "Develop high-quality native and cross-platform mobile apps.",
+		"img": "",
+		"tags": ["Mobile", "React Native", "Flutter", "iOS", "Android"]
+	},
+	{
+		"id": 3,
+		"name": "Custom CRM Development",
+		"description": "Create custom CRM systems tailored to business needs.",
+		"img": "",
+		"tags": ["CRM", "Business Solutions", "AI", "Automation"]
+	},
+	{
+		"id": 4,
+		"name": "AI-Powered Chatbots",
+		"description": "Build AI-driven chatbots for customer support and engagement.",
+		"img": "",
+		"tags": ["AI", "Chatbots", "NLP", "Automation", "Customer Support"]
+	},
+	{
+		"id": 5,
+		"name": "Cloud Infrastructure Setup",
+		"description": "Set up scalable cloud infrastructure and DevOps pipelines.",
+		"img": "",
+		"tags": ["Cloud", "AWS", "Azure", "DevOps", "Kubernetes"]
+	},
+	{
+		"id": 6,
+		"name": "SaaS Product Development",
+		"description": "Design and launch scalable Software-as-a-Service products.",
+		"img": "",
+		"tags": ["SaaS", "Cloud", "Web Development", "Scalability", "Automation"]
+	},
+	{
+		"id": 7,
+		"name": "API Development and Integration",
+		"description": "Build robust APIs and integrate third-party APIs seamlessly.",
+		"img": "",
+		"tags": ["API", "Integration", "REST", "GraphQL", "Backend"]
+	},
+	{
+		"id": 8,
+		"name": "AI and Machine Learning Solutions",
+		"description": "Develop AI/ML solutions for predictive analytics and automation.",
+		"img": "",
+		"tags": ["AI", "Machine Learning", "Data Science", "Automation", "Big Data"]
+	},
+	{
+		"id": 9,
+		"name": "Blockchain Application Development",
+		"description": "Develop secure and scalable blockchain-based applications.",
+		"img": "",
+		"tags": ["Blockchain", "Web3", "Crypto", "Smart Contracts", "DeFi"]
+	},
+	{
+		"id": 10,
+		"name": "UI/UX Design Services",
+		"description": "Create user-friendly and aesthetically pleasing interfaces.",
+		"img": "",
+		"tags": ["UI/UX", "Design", "Figma", "Prototyping", "User Research"]
+	},
+	{
+		"id": 11,
+		"name": "Game Development",
+		"description": "Design and develop immersive gaming experiences.",
+		"img": "",
+		"tags": ["Game Development", "Unity", "Unreal Engine", "Multiplayer", "3D"]
+	},
+	{
+		"id": 12,
+		"name": "Video Streaming Platforms",
+		"description": "Build video streaming platforms with live and on-demand content.",
+		"img": "",
+		"tags": ["Video Streaming", "Cloudflare", "Web Development", "Media"]
+	},
+	{
+		"id": 13,
+		"name": "IoT Application Development",
+		"description": "Develop smart applications to power IoT devices.",
+		"img": "",
+		"tags": ["IoT", "Embedded Systems", "Cloud", "Automation", "Smart Devices"]
+	},
+	{
+		"id": 14,
+		"name": "Enterprise Software Solutions",
+		"description": "Deliver robust enterprise-grade software tailored to your business.",
+		"img": "",
+		"tags": ["Enterprise", "ERP", "Custom Software", "Integration", "Scalability"]
+	},
+	{
+		"id": 15,
+		"name": "Digital Marketing Tools",
+		"description": "Create tools to enhance and automate digital marketing efforts.",
+		"img": "",
+		"tags": ["Marketing", "Analytics", "SEO", "Automation", "AdTech"]
+	},
+	{
+		"id": 16,
+		"name": "Data Visualization Platforms",
+		"description": "Design platforms to visualize and analyze large data sets.",
+		"img": "",
+		"tags": ["Data Visualization", "Big Data", "D3.js", "Analytics", "Dashboards"]
+	},
+	{
+		"id": 17,
+		"name": "Voice Assistants and Speech Recognition",
+		"description": "Build custom voice assistants and speech-to-text solutions.",
+		"img": "",
+		"tags": ["Voice", "AI", "Speech Recognition", "NLP", "Assistants"]
+	},
+	{
+		"id": 18,
+		"name": "Cybersecurity Solutions",
+		"description": "Implement robust security solutions to protect your software.",
+		"img": "",
+		"tags": ["Cybersecurity", "Encryption", "Firewalls", "Compliance", "Data Protection"]
+	},
+	{
+		"id": 19,
+		"name": "Educational Platforms",
+		"description": "Build platforms for e-learning and online course management.",
+		"img": "",
+		"tags": ["Education", "LMS", "Web Development", "Video", "CMS"]
+	},
+	{
+		"id": 20,
+		"name": "DevOps and CI/CD Automation",
+		"description": "Optimize your development process with CI/CD pipelines.",
+		"img": "",
+		"tags": ["DevOps", "CI/CD", "Automation", "Cloud", "Infrastructure"]
+	}
+]
