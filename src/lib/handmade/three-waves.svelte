@@ -242,7 +242,7 @@
 </script>
 
 <div
-	class="z-10 bg-gradient-to-b from-transparent via-background to-background"
+	class="z-0 bg-gradient-to-b from-transparent via-background to-background"
 	bind:this={container}
 	style={'height: ' + canvasHeight + 'px; width: ' + canvasWidth + ';'}
 ></div>

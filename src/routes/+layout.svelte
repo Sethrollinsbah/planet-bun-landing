@@ -117,10 +117,10 @@
 				duration: 1000,
 				easing: backOut
 			}}
-			class=" sticky top-0 z-50 flex h-20 w-full flex-row items-center justify-between border-y-[1px] border-muted bg-background px-12 text-xl"
+			class=" sticky top-0 z-50 flex h-20 w-full flex-row items-center justify-between border-y-[1px] border-muted bg-background px-4 text-xl sm:px-12"
 		>
 			<Logo size="w-32  h-20" small={false}></Logo>
-			<Button variant="outline">Request a Quote</Button>
+			<Button class="mt-4" variant="outline">Request a Quote</Button>
 		</div>
 		{#if $browserLoaded}
 			<div class="flex w-full flex-col items-center justify-center py-16">

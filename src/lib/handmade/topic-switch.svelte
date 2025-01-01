@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { fly } from 'svelte/transition';
 
 	// Dynamic list of routes
-	let routes = ['Works', 'Services', 'Select', 'Tools']; // Add or remove items here easily
+	let routes = ['Design', 'Performance', 'Connection', 'Integration']; // Add or remove items here easilyservice
 	let hoverId: number | null = null; // For hover effect
 	let selected = 0; // Track selected index
 	const itemCount = routes.length; // Total number of items
@@ -13,19 +14,23 @@
 
 <div class="flex h-full flex-col-reverse justify-between md:flex-col">
 	{#if selected === 0}
-		<p>
+		<p in:fly={{ duration: 100, y: 50, delay: 100 }} out:fly={{ duration: 100, y: 50 }}>
 			runway Logo build times went from 7m to 40s.leonardo-ai Logo saw a 95% reduction in page load
 			times. zapier Logo saw 24x faster builds.
 		</p>
 	{:else if selected === 1}
-		<p>
+		<p in:fly={{ duration: 100, y: 50, delay: 100 }} out:fly={{ duration: 100, y: 50 }}>
 			m 7m to 40s.leonardo-ai Logo saw a 95% reduction in page load times. zapier Logo saw 24x
 			faster builds.
 		</p>
 	{:else if selected === 2}
-		<p>m 7m to 40s.leonardo-ai Logo saw a 95% reduction in page load times. z4x faster builds.</p>
+		<p in:fly={{ duration: 100, y: 50, delay: 100 }} out:fly={{ duration: 100, y: 50 }}>
+			m 7m to 40s.leonardo-ai Logo saw a 95% reduction in page load times. z4x faster builds.
+		</p>
 	{:else if selected === 3}
-		<p>m 7m to 40s.uction in page load times. zapier Logo saw 24x faster builds.</p>
+		<p in:fly={{ duration: 100, y: 50, delay: 100 }} out:fly={{ duration: 100, y: 50 }}>
+			m 7m to 40s.uction in page load times. zapier Logo saw 24x faster builds.
+		</p>
 	{/if}
 
 	<!-- </p> -->
@@ -36,7 +41,7 @@
 		<div class="relative flex h-full w-full">
 			<!-- Highlight Background -->
 			<div
-				class="absolute h-full rounded-full ring-1 ring-foreground/10 transition-all duration-300"
+				class="absolute h-full rounded-full shadow ring-1 ring-muted transition-all duration-300"
 				style="
 				width: {itemWidth};
 				left: {hoverId !== null ? (hoverId * 100) / itemCount : (selected * 100) / itemCount}%;
