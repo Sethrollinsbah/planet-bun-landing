@@ -20,7 +20,7 @@
 
 <div class="flex flex-col items-center justify-center">
 	<div
-		class="flex min-h-[90dvh] flex-col items-center justify-center"
+		class="flex flex-col items-center justify-center"
 		in:fly={{
 			y: 100,
 			duration: 1200,

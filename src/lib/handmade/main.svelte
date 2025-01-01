@@ -82,12 +82,13 @@
 			style={`margin: ${Math.ceil(gridSpacing)}px;`}
 			class={`z-0 w-auto space-y-2 bg-gradient-to-b from-background via-background to-transparent text-center`}
 		>
-			<a
-				href={'/en/blogs?id=123'}
-				class="rounded-full p-1 px-4 text-xs font-light ring-1 ring-muted sm:text-base"
-				>Announcing our Official Release</a
-			>
-
+			<!-- TODO: add Blogs link -->
+			<!-- <a -->
+			<!-- 	href={'/en/blogs?id=123'} -->
+			<!-- 	class="rounded-full p-1 px-4 text-xs font-light ring-1 ring-muted sm:text-base" -->
+			<!-- 	>Announcing our Official Release</a -->
+			<!-- > -->
+			<!---->
 			<TitleSvg {animate}></TitleSvg>
 
 			<div class="grid grid-cols-1 gap-y-4">
@@ -122,8 +123,11 @@
 	</section>
 	<section class=" flex h-full w-full flex-col items-start justify-start space-y-8 p-8 py-12">
 		<div class="flex w-full flex-col items-start justify-start space-y-4">
-			<h1>Planet Bun is a Boutique Dev Shop</h1>
-			<h2 class="text-start">We're a team of developers that love building tools</h2>
+			<h1>Planet Bun is a Miami Based Dev Shop</h1>
+			<h2 class="text-center">
+				Empowering Miami businesses with cutting-edge, customized software solutions that drive
+				growth, efficiency, and success in the competitive, evolving marketplace.
+			</h2>
 		</div>
 		<div class="grid h-full w-full grid-cols-1 gap-8 md:grid-cols-2">
 			<div class="aspect-video w-full rounded-xl ring-1 ring-muted"></div>
