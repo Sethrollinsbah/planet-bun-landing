@@ -97,10 +97,7 @@
 					Narrow down your projects scope by taking our product selection quiz.
 				</p>
 				<Button
-					onmouseover={() => {
-						buttonHover = true;
-						goto('/' + lang + '/quiz');
-					}}
+					href={'/' + lang + '/quiz'}
 					class="z-50 mx-auto mt-4 h-12 w-full max-w-sm rounded-full">Take Quiz</Button
 				>
 				<button class="group z-50 m-auto flex w-fit rounded-full text-center"

@@ -83,10 +83,10 @@
 </script>
 
 <div
-	class="relative z-20 h-full w-full min-w-[30rem] max-w-4xl overflow-clip rounded-3xl bg-background shadow-xl ring-1 ring-muted"
+	class="relative z-20 h-full w-full min-w-[30rem] max-w-4xl overflow-clip rounded-3xl bg-background pb-8 shadow-xl ring-1 ring-muted"
 >
 	<p
-		class="flex h-full w-full justify-between bg-background px-4 py-4 text-center font-bold text-primary"
+		class="flex h-full w-full max-w-md justify-between bg-background px-4 py-4 text-center font-bold text-primary"
 	>
 		<span class="my-auto size-5">
 			<button aria-label="back" class:hidden={show === 0} class="size-5" on:click={handleBack}>
@@ -100,7 +100,9 @@
 				</svg>
 			</button>
 		</span>
-		{questions[show].title}
+		<span class="max-w-xs text-center">
+			{questions[show].title}
+		</span>
 		<span class="size-5"></span>
 	</p>
 
@@ -122,14 +124,14 @@
 						y: 100,
 						duration: 200
 					}}
-					class="relative col-span-full w-full space-y-1"
+					class="relative col-span-full w-full max-w-md space-y-1"
 				>
 					{#if question.type === 'choice' && 'choices' in question}
 						{#each question.choices as choice, i}
 							<button
 								class:rounded-t-xl={i === 0}
 								class:rounded-b-xl={i === question.choices.length - 1}
-								class="h-fit w-full rounded-md py-4 capitalize shadow ring-1 ring-muted transition-all duration-300 hover:bg-blue-600 hover:text-gray-100 active:scale-95"
+								class="h-fit w-full rounded-md py-4 capitalize shadow ring-1 ring-muted transition-all duration-300 hover:bg-amber-800 hover:text-gray-100 active:scale-95"
 								on:click={() => {
 									answers[question.key] = choice;
 									handleNext();
@@ -138,6 +140,46 @@
 								{choice}
 							</button>
 						{/each}
+					{:else if question.type === 'multiselect'}
+						<div class="relative col-span-full flex h-full w-full flex-col">
+							<Label for="phone-2">Phone</Label>
+							<Input
+								type="tel"
+								on:input={(event) => {
+									// Allow only numeric characters
+									const input = event.target.value;
+
+									answers[question.key] = { number: input.replace(/\D/g, ''), code: 'US' }; // Remove non-numeric characters
+								}}
+								bind:value={answers[question.key].number}
+								id="phone-2"
+								placeholder="phone"
+							/>
+							<p class="text-sm text-muted-foreground">Enter your phone.</p>
+							<Button on:click={handleNext} class="relative mx-auto w-fit max-w-xs">
+								{'Continue'}
+							</Button>
+						</div>
+					{:else if question.type === 'text'}
+						<div class="relative col-span-full flex h-full w-full flex-col">
+							<Label for="phone-2">Phone</Label>
+							<Input
+								type="tel"
+								on:input={(event) => {
+									// Allow only numeric characters
+									const input = event.target.value;
+
+									answers[question.key] = { number: input.replace(/\D/g, ''), code: 'US' }; // Remove non-numeric characters
+								}}
+								bind:value={answers[question.key].number}
+								id="phone-2"
+								placeholder="phone"
+							/>
+							<p class="text-sm text-muted-foreground">Enter your phone.</p>
+							<Button on:click={handleNext} class="relative mx-auto w-fit max-w-xs">
+								{'Continue'}
+							</Button>
+						</div>
 					{:else if question.type === 'phone'}
 						<div class="relative col-span-full flex h-full w-full flex-col">
 							<Label for="phone-2">Phone</Label>
@@ -218,136 +260,5 @@
 				</div>
 			{/if}
 		{/each}
-		<!-- <div class="relative flex h-fit w-full items-center justify-between pt-4"> -->
-		<!-- 	{#each questions as question, i} -->
-		<!-- 		<div -->
-		<!-- 			class:scale-50={show > i || show < i} -->
-		<!-- 			class:-translate-x-full={show > i} -->
-		<!-- 			class:translate-x-full={show < i} -->
-		<!-- 			class:opacity-0={show !== i} -->
-		<!-- 			class:opacity-100={show === i} -->
-		<!-- 			class="absolute left-0 top-4 grid h-full w-full grid-cols-2 justify-evenly gap-x-4 transition-all duration-300 md:flex md:space-x-4" -->
-		<!-- 		> -->
-		<!-- 			{#if question.type === 'name'} -->
-		<!-- 				<div class="relative col-span-full flex h-full w-full flex-col"> -->
-		<!-- 					<div class="grid h-full min-h-16 w-full grid-cols-2 gap-2"> -->
-		<!-- 						<Input -->
-		<!-- 							class="" -->
-		<!-- 							bind:value={answers[question.key].firstName} -->
-		<!-- 							placeholder={'First Name'} -->
-		<!-- 						/> -->
-		<!-- 						<Input -->
-		<!-- 							class="" -->
-		<!-- 							bind:value={answers[question.key].lastName} -->
-		<!-- 							placeholder={'Last Name'} -->
-		<!-- 						/> -->
-		<!-- 					</div> -->
-		<!-- 					<Button -->
-		<!-- 						on:click={handleNext} -->
-		<!-- 						class="absolute right-1/2 top-20 mx-auto mt-auto w-fit max-w-xs translate-x-1/2" -->
-		<!-- 					> -->
-		<!-- 						{'Continue'} -->
-		<!-- 					</Button> -->
-		<!-- 				</div> -->
-		<!-- 			{:else if question.type === 'email'} -->
-		<!-- 				<div class="relative col-span-full flex h-full w-full flex-col"> -->
-		<!-- 					<Input -->
-		<!-- 						class="h-full min-h-16 w-full" -->
-		<!-- 						bind:value={answers[question.key]} -->
-		<!-- 						placeholder={'Email Address'} -->
-		<!-- 					/> -->
-		<!-- 					<Button on:click={handleNext} class="relative mx-auto w-fit max-w-xs"> -->
-		<!-- 						{'Continue'} -->
-		<!-- 					</Button> -->
-		<!-- 				</div> -->
-		<!-- 			{:else if question.type === 'age'} -->
-		<!-- 				<div class="relative col-span-full flex h-full w-full flex-col"> -->
-		<!-- 					<Popover.Root> -->
-		<!-- 						<Popover.Trigger asChild let:builder> -->
-		<!-- 							<Button -->
-		<!-- 								variant="outline" -->
-		<!-- 								class={cn( -->
-		<!-- 									'mx-auto mb-4 min-h-16 w-[280px] justify-start text-left font-normal', -->
-		<!-- 									!answers[question.key] && 'text-muted-foreground' -->
-		<!-- 								)} -->
-		<!-- 								builders={[builder]} -->
-		<!-- 							> -->
-		<!-- 								<CalendarIcon class="mr-2 h-4 w-4" /> -->
-		<!-- 								{answers[question.key] -->
-		<!-- 									? df.format(answers[question.key].toDate(getLocalTimeZone())) -->
-		<!-- 									: 'Pick a date'} -->
-		<!-- 							</Button> -->
-		<!-- 						</Popover.Trigger> -->
-		<!-- 						<Popover.Content class="w-auto p-0"> -->
-		<!-- 							<Calendar bind:value={answers[question.key]} initialFocus /> -->
-		<!-- 						</Popover.Content> -->
-		<!-- 					</Popover.Root> -->
-		<!-- 					<Button on:click={handleNext} class="relative mx-auto w-fit max-w-xs"> -->
-		<!-- 						{'Continue'} -->
-		<!-- 					</Button> -->
-		<!-- 				</div> -->
-		<!-- 			{:else if question.type === 'zip'} -->
-		<!-- 				<div class="relative col-span-full flex h-full w-full flex-col"> -->
-		<!-- 					<Input -->
-		<!-- 						class="h-full min-h-16 w-full" -->
-		<!-- 						bind:value_place={answers[question.key]} -->
-		<!-- 						placeholder={'Zip Code'} -->
-		<!-- 						on:input={(event) => { -->
-		<!-- 							console.log(event); -->
-		<!-- 						}} -->
-		<!-- 						placeholder_eg={'12345'} -->
-		<!-- 					/> -->
-		<!-- 					<button -->
-		<!-- 						type="button" -->
-		<!-- 						on:click={async () => { -->
-		<!-- 							try { -->
-		<!-- 								const zipCode = await getLocation(); -->
-		<!-- 								console.log(); -->
-		<!-- 								zipcodemessage = 'Found: ' + zipCode; -->
-		<!-- 								answers[question.key] = zipCode; -->
-		<!-- 							} catch (error) { -->
-		<!-- 								zipcodemessage = error.message; -->
-		<!-- 							} -->
-		<!-- 						}} -->
-		<!-- 						class="mt-0 pt-0 text-xs hover:underline" -->
-		<!-- 						>Get location <i class="font-light"> -->
-		<!-- 							{#if zipcodemessage}{zipcodemessage}{/if}</i -->
-		<!-- 						></button -->
-		<!-- 					> -->
-		<!-- 					<Button on:click={handleNext} class="relative mx-auto w-fit max-w-xs"> -->
-		<!-- 						{'Continue'} -->
-		<!-- 					</Button> -->
-		<!-- 				</div> -->
-		<!-- 			{:else if question.type === 'phone'} -->
-		<!-- 				<div class="relative col-span-full flex h-full w-full flex-col"> -->
-		<!-- 					<!-- <Phone --> -->
-		<!-- 					<!-- 	bind:code={answers[question.key].code} --> -->
-		<!-- 					<!-- 	valu={'Phone'} --> -->
-		<!-- 					<!-- 	bind:number={answers[question.key].number} --> -->
-		<!-- 					<!-- /> --> -->
-		<!-- 					<Button on:click={handleNext} class="relative mx-auto w-fit max-w-xs"> -->
-		<!-- 						{'Continue'} -->
-		<!-- 					</Button> -->
-		<!-- 				</div> -->
-		<!-- 			{:else if question.type === 'choice' && 'choices' in question} -->
-		<!-- 				<div class="relative col-span-full w-full space-y-1"> -->
-		<!-- 					{#each question.choices as choice, i} -->
-		<!-- 						<button -->
-		<!-- 							class:rounded-t-xl={i === 0} -->
-		<!-- 							class:rounded-b-xl={i === question.choices.length - 1} -->
-		<!-- 							class="h-fit w-full rounded-md py-4 capitalize shadow ring-1 ring-muted transition-all duration-300 hover:bg-blue-600 hover:text-gray-100 active:scale-95" -->
-		<!-- 							on:click={() => { -->
-		<!-- 								answers[question.key] = choice; -->
-		<!-- 								handleNext(); -->
-		<!-- 							}} -->
-		<!-- 						> -->
-		<!-- 							{choice} -->
-		<!-- 						</button> -->
-		<!-- 					{/each} -->
-		<!-- 				</div> -->
-		<!-- 			{/if} -->
-		<!-- 		</div> -->
-		<!-- {/each} -->
-		<!-- </div> -->
 	</div>
 </div>
