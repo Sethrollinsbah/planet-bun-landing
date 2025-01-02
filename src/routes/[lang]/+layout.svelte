@@ -3,7 +3,8 @@
 	import { fly } from 'svelte/transition';
 	import { backOut } from 'svelte/easing';
 	import { browser } from '$app/environment';
-	import { browserLoaded } from '$lib';
+	import { browserLoaded, calDialog } from '$lib';
+	import CalDialog from '$lib/handmade/cal-dialog.svelte';
 	let { children } = $props();
 	let show = $state(false);
 	$effect(() => {
@@ -39,3 +40,4 @@
 
 	<NavMenu></NavMenu>
 </div>
+<CalDialog></CalDialog>

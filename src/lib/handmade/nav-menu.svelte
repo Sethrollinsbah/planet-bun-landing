@@ -9,7 +9,7 @@
 	// Define the navigation routes with their icons
 	const routes = [
 		{ label: 'Works', icon: Layers2, href: 'works' },
-		{ label: 'Services', icon: Calculator, href: 'services' },
+		{ label: 'Quiz', icon: Calculator, href: 'quiz' },
 		{ label: 'Select', icon: ShieldQuestion, href: 'select' },
 		{ label: 'Blog', icon: Rss, href: 'blog' }
 	] as const;

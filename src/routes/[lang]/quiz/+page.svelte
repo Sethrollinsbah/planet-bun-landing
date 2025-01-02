@@ -2,6 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { lang } from '$lib';
 	import Quiz from '$lib/handmade/quiz.svelte';
+	import Alert from './alert.svelte';
 
 	const questions = [
 		{
@@ -26,19 +27,31 @@
 			key: 'platform',
 			type: 'choice',
 			title: 'Which platform(s) will the MVP be built for?',
-			choices: ['Web', 'iOS', 'Android', 'Cross-platform']
+			choices: ['Web', 'iOS', 'Android', 'Desktop', 'Cross-platform']
 		},
 		{
-			key: 'core_features',
+			key: 'core_features_auth',
 			type: 'choice',
-			title: 'What core features should the MVP include?',
-			choices: [
-				'User authentication',
-				'Dashboard',
-				'Payment gateway',
-				'Notifications',
-				'Integration with third-party services'
-			]
+			title: 'Is a user authentication a core feature needed within your product?',
+			choices: ['Yes', 'No', 'Not sure yet']
+		},
+		{
+			key: 'core_features_dashboard',
+			type: 'choice',
+			title: 'Is a dashboard a core feature needed within your product?',
+			choices: ['Yes', 'No', 'Not sure yet']
+		},
+		{
+			key: 'core_features_notifications',
+			type: 'choice',
+			title: 'Will your users need to be sent notifications from your product?',
+			choices: ['Yes', 'No', 'Not sure yet']
+		},
+		{
+			key: 'core_features_thirdPartyIntegrations',
+			type: 'choice',
+			title: "Will your product need to integrate with any other third party services or api's?",
+			choices: ['Yes', 'No', 'Not sure yet']
 		},
 		{
 			key: 'timeline',
@@ -58,21 +71,34 @@
 			]
 		},
 		{
-			key: 'existing_assets',
+			key: 'existing_assets_mockups',
 			type: 'choice',
-			title: 'Do you have any existing assets for the project?',
-			choices: ['Design mockups', 'Wireframes', 'Codebase', 'No assets available']
+			title: 'Do you have any existing design mockups for the project?',
+			choices: ['Yes', 'No', 'Not sure yet']
+		},
+		{
+			key: 'existing_assets_wireframes',
+			type: 'choice',
+			title: 'Do you have any existing wireframes for the project?',
+			choices: ['Yes', 'No', 'Not sure yet']
+		},
+		{
+			key: 'existing_assets_codebase',
+			type: 'choice',
+			title: 'Has an existing codebase/git repository been initialized for this project?',
+			choices: ['Yes', 'No', 'Not sure yet']
 		},
 		{
 			key: 'user_flow',
 			type: 'choice',
-			title: 'What is the desired user flow or journey for your MVP?',
+			title:
+				'What is the estimated complexity of the desired user flow or journey for your product?',
 			choices: ['Simple and intuitive', 'Highly interactive', 'Data-heavy workflows', 'Other']
 		},
 		{
 			key: 'scalability',
 			type: 'choice',
-			title: 'How important is scalability for your MVP?',
+			title: 'How important is scalability for this iteration of your product?',
 			choices: ['Not important', 'Moderately important', 'Very important']
 		},
 		{
@@ -90,7 +116,7 @@
 		{
 			key: 'competitors',
 			type: 'choice',
-			title: 'Who are your main competitors, if any?',
+			title: 'Estimate a count of the main competitors are in your market, if any?',
 			choices: ['None', '1-3 competitors', '3-5 competitors', 'More than 5 competitors']
 		},
 		{
@@ -108,8 +134,9 @@
 		{
 			key: 'future_features',
 			type: 'choice',
-			title: 'What features would you like to add in the future?',
-			choices: ['More integrations', 'Advanced analytics', 'AI/ML capabilities', 'Other']
+			title:
+				'Are you looking to add any AI/ML capabilities features in this iteration or the future?',
+			choices: ['Yes', 'No', 'Not sure yet']
 		},
 		{
 			key: 'team',
@@ -123,42 +150,18 @@
 			title: 'How do you prefer to communicate about the project?',
 			choices: ['Weekly updates', 'Bi-weekly updates', 'Ad-hoc updates', 'Daily standups']
 		},
-
-		// {
-		// 	key: 'zip',
-		// 	type: 'zip' as const,
-		// 	title: 'What is your zip code?',
-		// 	validation: (value: string) => /^\d{5}$/.test(value),
-		// 	errorMessage: 'Please enter a valid zip code'
-		// },
-
 		{
-			key: 'phone',
-			type: 'phone' as const,
-			title: 'What is your phone number?',
-			validation: (value: { code: string; number: string }) =>
-				value?.number?.replace(/[^0-9]/g, '').length > 0,
-
-			errorMessage: 'Please enter a valid phone number'
-		},
-		{
-			key: 'email',
-			type: 'email' as const,
-			title: 'What is your email?',
-			validation: (value: string) => /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/.test(value),
-			errorMessage: 'Please enter a valid email address'
-		},
-		{
-			key: 'age',
-			type: 'age' as const,
-			title: 'What is your availability?',
-			validation: (value: DateValue) => value !== null,
-			errorMessage: 'Please select your availability'
+			key: 'contact',
+			type: 'form',
+			title: 'Please fill out this final form',
+			validation: null,
+			errorMessage: 'Please fill out your contact information'
 		}
 	];
+	let open = $state(true);
 </script>
 
-<section class="flex flex-col items-center justify-start pb-20">
+<section class="relative flex min-h-[90vh] flex-col items-center justify-start pb-20">
 	<Quiz
 		onSubmit={() => {
 			goto('/' + lang + '/completion');
@@ -166,3 +169,4 @@
 		{questions}
 	></Quiz>
 </section>
+<Alert {open}></Alert>

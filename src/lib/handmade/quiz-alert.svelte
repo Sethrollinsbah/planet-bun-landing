@@ -23,8 +23,8 @@
 			class="group-hover:hidden"
 		/><path d="M5 18H3" class="group-hover:hidden" /></svg
 	>
-	<Alert.Title>Ai Alert!</Alert.Title>
+	<Alert.Title>Heads up!</Alert.Title>
 	<Alert.Description class="font-light text-primary/50"
-		>Take our quick ai interview to see which of our Select offerings you may be looking for.</Alert.Description
+		>Take 5 minute onboarding quiz to see which of our Select offerings you may be looking for.</Alert.Description
 	>
 </Alert.Root>

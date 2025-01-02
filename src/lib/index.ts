@@ -4,3 +4,4 @@ import { writable } from 'svelte/store';
 export let selectedWork = writable();
 export let browserLoaded = writable(false);
 export let lang = 'en';
+export let calDialog = writable(false);

@@ -214,7 +214,7 @@
 							{#if value}
 								<p>Available Slots</p>
 							{:else}
-								<p>Immigration Consultation</p>
+								<p>Discovery Call</p>
 							{/if}
 						</div>
 					</div>
@@ -395,18 +395,19 @@
 								</div>
 							{:else}
 								<div class=" w-60 space-y-1">
-									<p class="block md:hidden">Software Consultation</p>
+									<p class="block md:hidden">Discovery Call</p>
 									<p class="text-xs font-light opacity-50">
-										Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto iure facere
-										rem, incidunt provident animi minus.
+										Discuss your teams needs with a licensed software professional. We go over your
+										projects scope, and assist you in completing the onboarding quiz if not already
+										completed.
 									</p>
 									<div class="flex space-x-1 pt-4">
 										<Clock class="size-4 " />
-										<p class="text-xs">30 minutes</p>
+										<p class="text-xs">25 minutes</p>
 									</div>
 									<div class="mt-1 flex space-x-1">
 										<Phone class="size-4 " />
-										<p class="text-xs">Phone call to: +1 (305) 923-9282</p>
+										<p class="text-xs">Phone call</p>
 									</div>
 									<div class="mt-1 flex space-x-1">
 										<div class="size-4 rounded-full bg-[url(/upwork.png)] bg-cover bg-center" />
@@ -414,7 +415,7 @@
 									</div>
 									<div class="mt-1 flex space-x-1">
 										<Globe class="size-4 " />
-										<p class="text-xs">Miami, Fl</p>
+										<p class="text-xs">Miami, Fl.</p>
 									</div>
 								</div>
 							{/if}

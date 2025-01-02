@@ -8,7 +8,7 @@
 	import type { ComponentType } from 'svelte';
 	import TitleSvg from './title-svg.svelte';
 	import { ChevronRight } from 'lucide-svelte';
-	import { lang } from '$lib';
+	import { calDialog, lang } from '$lib';
 	import { goto } from '$app/navigation';
 
 	// State declarations
@@ -100,7 +100,11 @@
 					href={'/' + lang + '/quiz'}
 					class="z-50 mx-auto mt-4 h-12 w-full max-w-sm rounded-full">Take Quiz</Button
 				>
-				<button class="group z-50 m-auto flex w-fit rounded-full text-center"
+				<button
+					onclick={() => {
+						$calDialog = true;
+					}}
+					class="group z-50 m-auto flex w-fit rounded-full text-center"
 					>Contact Us<ChevronRight
 						class="-ml-2 opacity-0 transition-all duration-300 group-hover:ml-1 group-hover:opacity-100"
 					></ChevronRight></button

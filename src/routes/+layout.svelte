@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import { browserLoaded } from '$lib';
+	import { browserLoaded, calDialog, lang } from '$lib';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import { Toaster } from '$lib/components/ui/sonner';
 	import Footer from '$lib/handmade/footer.svelte';
@@ -122,7 +122,13 @@
 			<a href="/">
 				<Logo size="w-32  h-20" small={false}></Logo>
 			</a>
-			<Button class="mt-4" variant="outline">Request a Quote</Button>
+			<Button
+				class="mt-4"
+				on:click={() => {
+					$calDialog = true;
+				}}
+				variant="outline">Schedule a call</Button
+			>
 		</div>
 		{#if $browserLoaded}
 			<div class="flex w-full flex-col items-center justify-center py-16">
