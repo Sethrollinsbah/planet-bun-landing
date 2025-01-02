@@ -159,30 +159,8 @@
 							</Button>
 						</div>
 					{:else if question.type === 'age'}
-						<div class="relative col-span-full flex h-full w-full flex-col">
-							<Popover.Root>
-								<Popover.Trigger asChild let:builder>
-									<Button
-										variant="outline"
-										class={cn(
-											'mx-auto mb-4 min-h-16 w-[280px] justify-start text-left font-normal',
-											!answers[question.key] && 'text-muted-foreground'
-										)}
-										builders={[builder]}
-									>
-										<CalendarIcon class="mr-2 h-4 w-4" />
-										{answers[question.key]
-											? df.format(answers[question.key].toDate(getLocalTimeZone()))
-											: 'Pick a date'}
-									</Button>
-								</Popover.Trigger>
-								<Popover.Content class="w-auto p-0">
-									<Calendar bind:value={answers[question.key]} initialFocus />
-								</Popover.Content>
-							</Popover.Root>
-							<Button on:click={handleNext} class="relative mx-auto w-fit max-w-xs">
-								{'Continue'}
-							</Button>
+						<div class="relative col-span-full mx-auto flex h-full w-fit flex-col">
+							<Calendar {handleNext} bind:value={answers[question.key]} initialFocus />
 						</div>
 					{:else if question.type === 'email'}
 						<div class="relative col-span-full flex h-full w-full flex-col gap-1.5">

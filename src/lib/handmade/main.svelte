@@ -9,6 +9,7 @@
 	import TitleSvg from './title-svg.svelte';
 	import { ChevronRight } from 'lucide-svelte';
 	import { lang } from '$lib';
+	import { goto } from '$app/navigation';
 
 	// State declarations
 	let gridSpacing = $state(102.4);
@@ -98,6 +99,7 @@
 				<Button
 					onmouseover={() => {
 						buttonHover = true;
+						goto('/' + lang + '/quiz');
 					}}
 					class="z-50 mx-auto mt-4 h-12 w-full max-w-sm rounded-full">Take Quiz</Button
 				>

@@ -17,18 +17,27 @@
 			choices: ['1', '2', '3', '4', '5+']
 		},
 		{
-			key: 'age',
-			type: 'age' as const,
-			title: 'What is your DOB?',
-			validation: (value: DateValue) => value !== null,
-			errorMessage: 'Please select your date of birth'
+			key: 'pregnant',
+			type: 'choice' as const,
+			title: 'Are you and your spouse currently pregnant?',
+			choices: ['Yes', 'No']
 		},
+		// {
+		// 	key: 'zip',
+		// 	type: 'zip' as const,
+		// 	title: 'What is your zip code?',
+		// 	validation: (value: string) => /^\d{5}$/.test(value),
+		// 	errorMessage: 'Please enter a valid zip code'
+		// },
+
 		{
-			key: 'zip',
-			type: 'zip' as const,
-			title: 'What is your zip code?',
-			validation: (value: string) => /^\d{5}$/.test(value),
-			errorMessage: 'Please enter a valid zip code'
+			key: 'phone',
+			type: 'phone' as const,
+			title: 'What is your phone number?',
+			validation: (value: { code: string; number: string }) =>
+				value?.number?.replace(/[^0-9]/g, '').length > 0,
+
+			errorMessage: 'Please enter a valid phone number'
 		},
 		{
 			key: 'email',
@@ -38,19 +47,11 @@
 			errorMessage: 'Please enter a valid email address'
 		},
 		{
-			key: 'pregnant',
-			type: 'choice' as const,
-			title: 'Are you and your spouse currently pregnant?',
-			choices: ['Yes', 'No']
-		},
-		{
-			key: 'phone',
-			type: 'phone' as const,
-			title: 'What is your phone number?',
-			validation: (value: { code: string; number: string }) =>
-				value?.number?.replace(/[^0-9]/g, '').length > 0,
-
-			errorMessage: 'Please enter a valid phone number'
+			key: 'age',
+			type: 'age' as const,
+			title: 'What is your availability?',
+			validation: (value: DateValue) => value !== null,
+			errorMessage: 'Please select your availability'
 		}
 	];
 </script>
