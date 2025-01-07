@@ -5,7 +5,7 @@
 	const works = [
 		[
 			{
-				image: 'https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg',
+				image: '/cilitos.png',
 				scopes: [
 					{
 						title: 'First',
@@ -219,141 +219,78 @@
 	});
 </script>
 
+<!-- in:fly={{ -->
+<!-- 		y: 100, -->
+<!-- 		delay: 200, -->
+<!-- 		duration: 1200, -->
+<!-- 		easing: backOut -->
+<!-- 	}} -->
+<!-- 	out:fly={{ -->
+<!-- 		y: 100, -->
+<!-- 		delay: 100, -->
+<!-- 		easing: backOut -->
+<!-- 	}} -->
 <div class="relative flex h-full w-screen flex-col items-center justify-center overflow-x-clip">
-	<div
-		in:fly={{
-			y: 100,
-			delay: 200,
-			duration: 1200,
-			easing: backOut
-		}}
-		out:fly={{
-			y: 100,
-			delay: 100,
-			easing: backOut
-		}}
-		class="flex h-full w-full flex-col items-center justify-start"
-	>
-		{#if !$selectedWork}
-			<div
-				out:blur|global={{ duration: 300 }}
-				in:fly={{ y: 100, duration: 500, delay: 300 }}
-				class="grid w-full grid-cols-2 gap-2 md:grid-cols-3"
-			>
-				{#each newWorks as workSection, id}
-					<div
-						class:col-span-2={id === 2}
-						class:grid-cols-3={id === 2}
-						class:md:grid-cols-1={id === 2}
-						class:md:col-span-1={id === 2}
-						class="grid gap-2"
-					>
-						{#each workSection as work, wid}
-							<div
-								onclick={() => {
-									window.scrollTo({ top: 0, behavior: 'smooth' });
-									$selectedWork = work;
-								}}
-								class="overflow-clip rounded-2xl transition-all duration-300 hover:blur-sm"
-							>
-								<img class="h-auto max-w-full rounded-2xl" src={work.image} alt="" />
-							</div>
-						{/each}
-					</div>
-				{/each}
-			</div>
-		{:else}
-			<div class=" mx-auto w-[90%] max-w-4xl">
-				<Button
-					on:click={() => {
-						$selectedWork = null;
-					}}
-					variant="outline"
-					size="icon"
-					class="z-40 mb-4 mr-auto size-8 rounded-full text-muted-foreground/60  {!$selectedWork.link
-						? 'hidden'
-						: 'block'}"
+	<div class="flex h-full w-full flex-col items-center justify-start">
+		<div
+			out:blur|global={{ duration: 300 }}
+			in:fly={{ y: 100, duration: 500, delay: 300 }}
+			class="grid w-full grid-cols-2 gap-2 px-2 md:grid-cols-3"
+		>
+			<!-- Column 1 -->
+			<div class="flex flex-col justify-between gap-2">
+				<a
+					href="/en/works/1"
+					class="aspect-[9/10] w-full overflow-clip rounded-2xl bg-gray-200 shadow"
 				>
-					<ChevronLeft class="m-auto size-4" />
-				</Button>
-				<div
-					class="relative mx-auto flex h-full flex-col items-start justify-between"
-					in:fly={{
-						y: 100,
-						delay: 200,
-						duration: 1200,
-						easing: backOut
-					}}
-					out:fly={{
-						y: 100,
-						delay: 100,
-						easing: backOut
-					}}
+					<img src="/cilitos.png" class="h-full w-full" />
+				</a>
+				<a
+					href="/en/works/1"
+					class="aspect-[5/4] w-full overflow-clip rounded-2xl bg-gray-200 shadow"
 				>
-					<div
-						class="absolute left-0 top-0 flex aspect-square h-[80%] max-w-4xl flex-col items-start justify-between overflow-clip"
-						style={gradientStyle}
-					></div>
-
-					<div
-						class="relative my-[5%] aspect-video w-full max-w-full rounded-2xl bg-opacity-5 object-fill"
-						style="background-image: url({$selectedWork.image});				
-         backdrop-filter: blur(10px); /* Optional for added depth */
-         z-index: -1; /* Ensure it's behind other elements */"
-					>
-						<div class="absolute left-0 top-0 h-full w-full bg-background/90"></div>
-						<img
-							class="relative mx-auto h-[110%] w-fit -translate-y-[5%] rounded-2xl object-cover shadow"
-							src={$selectedWork.image}
-							alt=""
-						/>
-					</div>
-					<div class="space-y-2">
-						<p class="text-4xl font-light">{$selectedWork.projectTitle}</p>
-						<p class="mt-2 max-w-sm font-light text-muted-foreground/50">
-							{$selectedWork.projectDescription}
-						</p>
-						<p class="mt-6 text-lg font-medium">Scopes</p>
-						{#each $selectedWork.scopes as s}
-							<div class="flex items-start justify-start text-muted-foreground/40">
-								<div class="mr-4">
-									<CheckAnimate checked={false}></CheckAnimate>
-								</div>
-
-								<div>
-									<p class="font-medium capitalize text-muted-foreground/90">{s.title}</p>
-									<p class="line-clamp-1 font-light text-muted-foreground/40">{s.problem}</p>
-								</div>
-							</div>
-						{/each}
-						<div class="mt-8">
-							{#each $selectedWork.scopes as s}
-								<div class="relative mt-8 grid grid-cols-2 space-x-4">
-									<div class=" sticky top-8 h-fit">
-										<p class="text-2xl font-light text-primary">{s.title}</p>
-										<p class="mt-2 max-w-sm font-light text-muted-foreground/50">
-											High end microphones, headphones and professional audio tools for the modern
-											sound engineer, producer, musician, recordist and content creator.
-										</p>
-									</div>
-									<div class="sticky top-8 space-y-4">
-										{#each s.img as si}
-											<img class=" max-h-[80dvh] rounded-2xl" src={si} />
-										{/each}
-									</div>
-								</div>
-							{/each}
-						</div>
-					</div>
-				</div>
-				{#if $selectedWork.productImage}
-					<p class="mt-8">Here are the final results:</p>
-
-					<img class="mt-4 w-full rounded-2xl" src={$selectedWork.productImage} />
-				{/if}
-				<ContactForm></ContactForm>
+					<img src="/cilitos.png" class="h-full w-full" /></a
+				>
+				<a
+					href="/en/works/1"
+					class="aspect-[3/2] w-full rounded-2xl bg-gray-200 bg-[url('/cilitos.png')] bg-cover bg-center shadow"
+				></a>
 			</div>
-		{/if}
+			<!-- Column 2 -->
+			<div class="flex flex-col gap-2">
+				<a
+					href="/en/works/1"
+					class="aspect-[1] w-full overflow-clip rounded-2xl bg-gray-200 shadow"
+				>
+					<img src="/cilitos.png" class="h-full w-full" /></a
+				>
+				<a
+					href="/en/works/1"
+					class="aspect-[5/8] w-full overflow-clip rounded-2xl bg-gray-200 shadow"
+				>
+					<img src="/cilitos.png" class="h-full w-full" /></a
+				>
+			</div>
+			<!-- Column 3 -->
+			<div class="col-span-full flex flex-row gap-2 md:col-span-1 md:flex-col">
+				<a
+					href="/en/works/1"
+					class="aspect-[8/5] h-full w-full overflow-clip rounded-2xl bg-gray-200 shadow"
+				>
+					<img src="/cilitos.png" class="h-full w-full" /></a
+				>
+				<a
+					href="/en/works/1"
+					class="aspect-[1] h-full w-full overflow-clip rounded-2xl bg-gray-200 shadow"
+				>
+					<img
+						src="/cilitos.png"
+						style="view-transition-name: work-image;"
+						class="h-full w-full"
+					/></a
+				>
+			</div>
+		</div>
 		<Carousel.Root class="h-full w-full py-10">
 			<div class="flex flex-row justify-between py-8 pl-8">
 				<h1>Client Testimonials</h1>
@@ -382,3 +319,39 @@
 		</Carousel.Root>
 	</div>
 </div>
+
+<style>
+	/* Ensure the image maintains its aspect ratio during transition */
+	:global(::view-transition-old(work-image)),
+	:global(::view-transition-new(work-image)) {
+		height: 100%;
+		object-fit: cover;
+	}
+
+	/* Optional: Add custom animation styles */
+	:global(::view-transition-old(work-image)) {
+		animation: fade-out 0.5s ease-out;
+	}
+
+	:global(::view-transition-new(work-image)) {
+		animation: fade-in 0.5s ease-in;
+	}
+
+	@keyframes fade-out {
+		from {
+			opacity: 1;
+		}
+		to {
+			opacity: 0;
+		}
+	}
+
+	@keyframes fade-in {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+</style>

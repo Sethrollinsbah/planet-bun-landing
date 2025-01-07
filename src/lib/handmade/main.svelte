@@ -10,6 +10,8 @@
 	import { ChevronRight } from 'lucide-svelte';
 	import { calDialog, lang } from '$lib';
 	import { goto } from '$app/navigation';
+	import Collab from './collab.svelte';
+	import TopTech from './top-tech.svelte';
 
 	// State declarations
 	let gridSpacing = $state(102.4);
@@ -71,7 +73,7 @@
 </script>
 
 <main
-	class="relative flex h-full min-h-20 w-full max-w-sm flex-col border-[1px] border-[#232323] sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-5xl"
+	class="relative mb-8 flex h-full min-h-20 w-full max-w-sm flex-col border-[1px] border-[#232323] sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-5xl"
 >
 	<section
 		bind:this={externalcontainer}
@@ -131,10 +133,11 @@
 				Empowering Miami businesses with cutting-edge, customized software solutions that drive
 				growth, efficiency, and success in the competitive, evolving marketplace.
 			</h2>
+			<div
+				class="aspect-[5/2] w-full rounded-2xl bg-[url('/bigCard.png')] bg-cover bg-center ring-1"
+			></div>
 		</div>
 		<div class="grid h-full w-full grid-cols-1 gap-8 md:grid-cols-2">
-			<div class="aspect-video w-full rounded-xl ring-1 ring-muted"></div>
-			<div class="aspect-video w-full rounded-xl ring-1 ring-muted"></div>
 			<div
 				class="col-span-full grid grid-cols-3 gap-x-8 sm:grid-cols-4 md:grid-cols-5 xl:grid-cols-6"
 			>
@@ -160,19 +163,16 @@
 		<TopicSwitch></TopicSwitch>
 		<div class="h-full">
 			<p class="aspect-video text-lg font-light text-muted-foreground">
-				View some of the prebuilt project bundles that we have to see if they suite your compnanies
-				needs.
+				Take the quiz so that we're able to match you with one of our agents.
 			</p>
-			<Button
-				variant="outline"
-				href={'/' + lang + '/services'}
-				class="mt-4 h-12 w-full rounded-full">View Services</Button
+			<Button variant="outline" href={'/' + lang + '/quiz'} class="mt-4 h-12 w-full rounded-full"
+				>Take the Quiz</Button
 			>
 		</div>
 	</section>
-	<section class="border-t-[1px] border-muted py-4">
-		<FeaturedWorks></FeaturedWorks>
-	</section>
+	<!-- <section class="border-t-[1px] border-muted py-4"> -->
+	<!-- 	<FeaturedWorks></FeaturedWorks> -->
+	<!-- </section> -->
 	<section
 		class=" test-start flex h-full w-full flex-col items-start justify-start space-y-8 border-t-[1px] border-muted p-8"
 	>
@@ -184,26 +184,27 @@
 			</h2>
 		</div>
 		<div class="grid h-full w-full grid-cols-1 gap-8 md:grid-cols-2">
-			<div class="aspect-video w-full rounded-xl ring-1 ring-muted"></div>
-			<div class="aspect-video w-full rounded-xl ring-1 ring-muted"></div>
+			<div
+				class="aspect-square w-full overflow-clip rounded-xl shadow-white ring-1 ring-muted transition-all duration-700 hover:shadow-lg hover:ring-primary"
+			>
+				<TopTech></TopTech>
+			</div>
+			<div
+				class="aspect-square w-full overflow-clip rounded-xl shadow-white ring-1 ring-muted transition-all duration-700 hover:shadow-xl hover:ring-primary"
+			>
+				<Collab></Collab>
+			</div>
 		</div>
 	</section>
 	<section
-		class=" test-start flex h-full w-full flex-col items-start justify-start space-y-8 border-t-[1px] border-muted p-8 py-4"
+		class=" test-start flex h-full w-full flex-col items-start justify-start space-y-8 border-t-[1px] border-muted p-8"
 	>
-		<div class="flex w-full flex-col items-start justify-start space-y-4">
-			<h1>First Class Product Experience</h1>
-			<h2 class="text-start">We're a team of developers that love building things</h2>
-			<h2 class="text-start">
-				Our goal is to create the email platform we've always wished we had — one that just works.
-			</h2>
-		</div>
-		<div class="grid h-full w-full grid-cols-1 gap-8 md:grid-cols-2">
-			<div class="aspect-video w-full rounded-xl ring-1 ring-muted"></div>
-			<div class="aspect-video w-full rounded-xl ring-1 ring-muted"></div>
-		</div>
+		<Button
+			variant="outline"
+			class="flex h-fit w-full flex-row items-center justify-start rounded-full p-8 text-3xl"
+			>Start Pursuing</Button
+		>
 	</section>
-	<section></section>
 </main>
 
 <style>

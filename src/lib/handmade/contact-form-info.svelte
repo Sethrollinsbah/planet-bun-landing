@@ -29,9 +29,11 @@
 </script>
 
 <section id="contact-us" class="h-full min-h-96 w-full px-8 py-12">
-	<div class="mx-auto flex h-fit w-full max-w-5xl flex-col space-x-8 md:flex-row">
-		<div class="sticky top-16 mx-auto h-fit max-w-md rounded-2xl p-8 shadow-lg ring-1 ring-muted">
-			<div class="mb-4 w-fit">
+	<div
+		class="mx-auto flex h-fit w-full max-w-5xl flex-col items-center justify-center space-x-8 md:flex-row"
+	>
+		<div class="sticky top-16 mx-auto h-fit max-w-md rounded-2xl p-8 shadow-lg">
+			<div class="mx-auto mb-4 w-fit">
 				<Logo size="h-12 w-20" small={true} />
 			</div>
 

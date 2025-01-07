@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { Sparkles } from 'lucide-svelte';
 	import * as Alert from '$lib/components/ui/alert';
+	import { lang } from '$lib';
+	import { Button } from '$lib/components/ui/button';
+	import { goto } from '$app/navigation';
 </script>
 
 <Alert.Root class="group mb-2 rounded-2xl">
@@ -26,5 +29,12 @@
 	<Alert.Title>Heads up!</Alert.Title>
 	<Alert.Description class="font-light text-primary/50"
 		>Take 5 minute onboarding quiz to see which of our Select offerings you may be looking for.</Alert.Description
+	>
+	<Button
+		on:click={() => {
+			goto('/' + lang + '/quiz');
+		}}
+		class="mt-4 w-full"
+		variant="outline">Start Quiz</Button
 	>
 </Alert.Root>

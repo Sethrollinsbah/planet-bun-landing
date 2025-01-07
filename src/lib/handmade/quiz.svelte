@@ -11,8 +11,8 @@
 	import { Input } from '$lib/components/ui/input';
 	import { isNumericLiteral } from 'typescript';
 	import TermsPrivacy from './terms-privacy.svelte';
+	import { onMount } from 'svelte';
 
-	// Define strict types for the question types
 	type QuestionType = 'name' | 'email' | 'age' | 'zip' | 'phone' | 'choice';
 
 	interface BaseQuestion {
@@ -37,25 +37,51 @@
 
 	export let questions: Question[];
 	export let onSubmit: (answers: Record<string, any>) => void;
-
 	let show = 0;
-	// Initialize answers with proper structure for name fields
 	let answers: Record<string, any> = {};
-	questions.forEach((q) => {
-		if (q.type === 'name') {
-			answers[q.key] = { firstName: '', lastName: '' };
-		} else if (q.type === 'phone') {
-			answers[q.key] = { code: 'US', number: '' };
+
+	// Initialize answers and load from localStorage if available
+	onMount(() => {
+		const savedForm = localStorage.getItem('onboardingForm');
+		if (savedForm) {
+			answers = JSON.parse(savedForm);
+			// Find the last answered question and set show accordingly
+			show = Math.max(0, Object.keys(answers).length - 1);
 		} else {
-			answers[q.key] = '';
+			// Initialize with default structure
+			questions.forEach((q) => {
+				if (q.type === 'name') {
+					answers[q.key] = { firstName: '', lastName: '' };
+				} else if (q.type === 'phone') {
+					answers[q.key] = { code: 'US', number: '' };
+				} else {
+					answers[q.key] = '';
+				}
+			});
 		}
+		updateShowPercent();
 	});
 
-	let show_percent = ((questions.length - show) / questions.length) * 100;
+	let show_percent = 100;
+
+	function updateShowPercent() {
+		show_percent = ((questions.length - show) / questions.length) * 100;
+	}
 
 	const df = new DateFormatter('en-US', {
 		dateStyle: 'long'
 	});
+
+	function saveToLocalStorage() {
+		const formData = {};
+		questions.forEach((question, index) => {
+			if (index <= show) {
+				// Only save answered questions
+				formData[question.key] = answers[question.key];
+			}
+		});
+		localStorage.setItem('onboardingForm', JSON.stringify(formData));
+	}
 
 	function handleNext() {
 		const currentQuestion = questions[show];
@@ -66,18 +92,32 @@
 			return;
 		}
 
+		// Save to localStorage after validation passes
+		saveToLocalStorage();
+
+		console.log(currentQuestion.title, currentAnswer);
+
 		if (show < questions.length - 1) {
 			show += 1;
-			show_percent = ((questions.length - show) / questions.length) * 100;
+			updateShowPercent();
 		} else {
 			onSubmit(answers);
 		}
 	}
-
 	function handleBack() {
-		if (show > 0) {
+		if (show >= 0) {
+			const currentQuestion = questions[show];
+
+			// Remove current question/answer from localStorage
+			const savedForm = localStorage.getItem('onboardingForm');
+			if (savedForm) {
+				const formData = JSON.parse(savedForm);
+				delete formData[currentQuestion.key];
+				localStorage.setItem('onboardingForm', JSON.stringify(formData));
+			}
+
 			show -= 1;
-			show_percent = ((questions.length - show) / questions.length) * 100;
+			updateShowPercent();
 		}
 	}
 	let zipcodemessage;
@@ -87,9 +127,7 @@
 	<div
 		class="relative z-20 h-full w-[90vw] overflow-clip rounded-3xl bg-background pb-8 shadow-xl ring-1 ring-muted sm:max-w-4xl"
 	>
-		<p
-			class="flex h-full w-full max-w-md bg-background px-4 py-4 text-start font-bold text-primary"
-		>
+		<p class="flex h-full w-full bg-background px-4 py-4 text-start font-bold text-primary">
 			<span class="w-full">
 				{questions[show].title}
 			</span>

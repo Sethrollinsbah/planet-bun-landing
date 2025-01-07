@@ -4,6 +4,7 @@
 
 @layer base {
 	:root {
+		view-transition-name: root;
 		--background: 240 10% 3.9%;
 		--foreground: 0 0% 98%;
 
@@ -53,8 +54,20 @@
 	/* Dark mode bottom shadow */
 }
 
-	.righteous-regular {
-		font-family: 'Righteous', serif;
-		font-weight: 400;
-		font-style: normal;
+.righteous-regular {
+	font-family: 'Righteous', serif;
+	font-weight: 400;
+	font-style: normal;
+}
+/* ::view-transition-old(root), */
+/* ::view-transition-new(root) { */
+/* 	animation-duration: 5s; */
+/**/
+/* } */
+@media (prefers-reduced-motion) {
+	::view-transition-group(*),
+	::view-transition-old(*),
+	::view-transition-new(*) {
+		animation: none !important;
 	}
+}

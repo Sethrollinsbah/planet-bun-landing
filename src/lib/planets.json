@@ -1,0 +1,60 @@
+[
+	{
+		"name": "Cielitos",
+		"image": "/cilitos.png",
+		"finalResults": "/cilitos.png",
+		"color": [40, 233, 35, 0.2],
+		"description": "From the surface of Mercury, the Sun would appear more than three times as large as it does when viewed from Earth, and the sunlight would be as much as 11 times brighter.",
+		"scopes": [
+			{
+				"title": "First",
+				"problem": "Why",
+				"desc": "Explain what happened",
+				"img": [""]
+			}
+		],
+		"projectDescription": "Lorem",
+		"companyName": "",
+		"projectTitle": "Revolutionizing the health space",
+		"link": null,
+		"details": [
+			{
+				"title": "Length of year",
+				"value": "88 earth days"
+			},
+			{
+				"title": "Planet type",
+				"value": "Terrestrial"
+			}
+		]
+	},
+	{
+		"name": "Venus",
+		"image": "/alpha.png",
+		"color": [40, 2, 35, 0],
+		"finalResults": "/cilitos.png",
+		"description": "Similar in structure and size to Earth, Venus's thick atmosphere traps heat in a runaway greenhouse effect, making it the hottest planet in our solar system.",
+		"scopes": [
+			{
+				"title": "First",
+				"problem": "Why",
+				"desc": "Explain what happened",
+				"img": [""]
+			}
+		],
+		"projectDescription": "Lorem",
+		"companyName": "",
+		"projectTitle": "Revolutionizing the health space",
+		"link": null,
+		"details": [
+			{
+				"title": "Length of year",
+				"value": "225 earth days"
+			},
+			{
+				"title": "Planet type",
+				"value": "Terrestrial"
+			}
+		]
+	}
+]
