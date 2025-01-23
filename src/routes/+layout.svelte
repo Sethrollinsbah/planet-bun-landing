@@ -110,28 +110,34 @@
 </svelte:head>
 
 <div class="relative">
-	<!-- {#if show && $page.url.href !== '/en/works' && $page.url.href !== '/en/works/1'} -->
-	<div
-		class=" sticky top-0 z-[999] flex h-20 w-full flex-row items-center justify-between border-y-[1px] border-muted bg-background px-4 text-xl sm:px-12"
-	>
-		<a href="/">
-			<Logo size="w-32  h-20" small={false}></Logo>
-		</a>
-		<Button
-			class="mt-4"
-			on:click={() => {
-				$calDialog = true;
+	{#if show && $page.url.href !== '/en/works'}
+		<div
+			in:fly={{
+				y: -50,
+				delay: 50,
+				duration: 1000,
+				easing: backOut
 			}}
-			variant="outline">Schedule a call</Button
+			class=" sticky top-0 z-[999] flex h-20 w-full flex-row items-center justify-between border-y-[1px] border-muted bg-background px-4 text-xl sm:px-12"
 		>
-	</div>
-	{#if $browserLoaded}
-		<div class="flex w-full flex-col items-center justify-center py-16">
-			{@render children()}
+			<a href="/">
+				<Logo size="w-32  h-20" small={false}></Logo>
+			</a>
+			<Button
+				class="mt-4"
+				on:click={() => {
+					$calDialog = true;
+				}}
+				variant="outline">Schedule a call</Button
+			>
 		</div>
-		<Footer></Footer>
+		{#if $browserLoaded}
+			<div class="flex w-full flex-col items-center justify-center py-16">
+				{@render children()}
+			</div>
+			<Footer></Footer>
+		{/if}
 	{/if}
-	<!-- {/if} -->
 </div>
 {#if !$browserLoaded}
 	<div

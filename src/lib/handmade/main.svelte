@@ -16,7 +16,6 @@
 	// State declarations
 	let gridSpacing = $state(102.4);
 	let gridColor = $state('#232323');
-	let ThreeWaves: ComponentType | undefined = $state(undefined);
 	let buttonHover = $state(false);
 	let externalcontainer = $state();
 
@@ -58,11 +57,6 @@
 
 			// Add resize listener
 			window.addEventListener('resize', updateGridSpacing);
-
-			// Load ThreeWaves component
-			import('./three-waves.svelte').then((module) => {
-				ThreeWaves = module.default;
-			});
 
 			// Cleanup
 			return () => {
@@ -116,19 +110,19 @@
 		<div
 			class="absolute bottom-0 -z-0 flex h-1/2 w-full flex-col items-center justify-center overflow-clip"
 		>
-			{#if ThreeWaves}
-				<svelte:component this={ThreeWaves} {externalcontainer} {buttonHover} {gridSpacing} />
-			{:else}
-				<p>Loading...</p>
-			{/if}
+			<ThreeWaves {externalcontainer} {buttonHover} {gridSpacing} />
 		</div>
 	</section>
 	<section id="companies" class="w-full border-b-[1px] border-t-[1px] border-muted px-4 py-5">
 		<Companies></Companies>
 	</section>
 	<section class=" flex h-full w-full flex-col items-start justify-start space-y-8 p-8 py-12">
-		<div class="flex w-full flex-col items-start justify-start space-y-4">
-			<h1>Planet Bun is a Miami Based Dev Shop</h1>
+		<div class="flex w-full flex-col items-center justify-center space-y-4">
+			<h1>
+				Planet Bun is a <br class="md:hidden" /><span class="font-bold text-orange-500"
+					>Miami Based</span
+				><br /> Dev Shop
+			</h1>
 			<h2 class="text-center">
 				Empowering Miami businesses with cutting-edge, customized software solutions that drive
 				growth, efficiency, and success in the competitive, evolving marketplace.
@@ -185,31 +179,50 @@
 		</div>
 		<div class="grid h-full w-full grid-cols-1 gap-8 md:grid-cols-2">
 			<div
-				class="aspect-square w-full overflow-clip rounded-xl shadow-white ring-1 ring-muted transition-all duration-700 hover:shadow-lg hover:ring-primary"
+				class="aspect-square w-full overflow-clip rounded-xl shadow-white ring-1 ring-muted transition-all duration-700 hover:shadow-lg hover:ring-primary md:aspect-[3/4] lg:aspect-square"
 			>
 				<TopTech></TopTech>
 			</div>
 			<div
-				class="aspect-square w-full overflow-clip rounded-xl shadow-white ring-1 ring-muted transition-all duration-700 hover:shadow-xl hover:ring-primary"
+				class="aspect-square w-full overflow-clip rounded-xl shadow-white ring-1 ring-muted transition-all duration-700 hover:shadow-xl hover:ring-primary md:aspect-[3/4] lg:aspect-square"
 			>
 				<Collab></Collab>
 			</div>
 		</div>
 	</section>
+	<!-- <section -->
+	<!-- 	style={gridStyle} -->
+	<!-- 	class="  relative flex aspect-[2/1] h-full w-full flex-col items-start justify-start border-t-[1px] border-muted p-8" -->
+	<!-- > -->
+	<!-- 	<div -->
+	<!-- 		class="absolute left-[0%] top-[0%] flex aspect-[1/2] h-fit w-[40%] flex-row items-center justify-start border-r-[1px] border-muted bg-background p-8 text-3xl" -->
+	<!-- 	> -->
+	<!-- 		Start Pursuing -->
+	<!-- 	</div> -->
+	<!-- 	<div -->
+	<!-- 		class="absolute left-[40%] top-0 flex aspect-square h-fit w-[40%] flex-row items-center justify-start bg-background p-8 text-3xl" -->
+	<!-- 	> -->
+	<!-- 		Start Pursuing -->
+	<!-- 	</div> -->
+	<!-- </section> -->
 	<section
-		class=" test-start flex h-full w-full flex-col items-start justify-start space-y-8 border-t-[1px] border-muted p-8"
+		style={gridStyle}
+		class=" test-start relative flex aspect-[2/1] h-full w-full flex-col items-start justify-start space-y-8 p-8"
 	>
 		<Button
+			on:click={() => {
+				goto('/en/quiz');
+			}}
 			variant="outline"
-			class="flex h-fit w-full flex-row items-center justify-start rounded-full p-8 text-3xl"
-			>Start Pursuing</Button
+			class="absolute bottom-[20%] left-[10%] flex  h-fit w-[80%] flex-row items-center justify-start rounded-full "
+			>Get Started Today</Button
 		>
 	</section>
 </main>
 
 <style>
 	h1 {
-		@apply bg-gradient-to-r from-primary/80 via-primary/50 to-primary bg-clip-text text-center text-5xl text-transparent;
+		@apply bg-gradient-to-r from-primary/80 via-primary/70 to-primary bg-clip-text text-center text-5xl font-medium text-transparent;
 	}
 	h2 {
 		@apply bg-gradient-to-r from-primary/60 via-primary/50 to-primary/70 bg-clip-text text-center text-xl text-transparent;
